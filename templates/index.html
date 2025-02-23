@@ -1,0 +1,55 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Analysis Dashboard</h1>
+        
+        <div class="input-section">
+            <input type="text" id="ticker" placeholder="Enter stock ticker (e.g., AAPL)">
+            <select id="period">
+                <option value="1d">1 Day</option>
+                <option value="5d">5 Days</option>
+                <option value="1mo">1 Month</option>
+                <option value="3mo">3 Months</option>
+                <option value="6mo">6 Months</option>
+                <option value="1y">1 Year</option>
+            </select>
+            <button onclick="getStockData()">Get Stock Data</button>
+        </div>
+
+        <div id="loading" class="loading hidden">Loading...</div>
+        
+        <div id="error-message" class="error hidden"></div>
+        
+        <div id="stock-info" class="stock-info hidden">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Current Price</h3>
+                    <p id="current-price">-</p>
+                </div>
+                <div class="info-item">
+                    <h3>Period High</h3>
+                    <p id="period-high">-</p>
+                </div>
+                <div class="info-item">
+                    <h3>Period Low</h3>
+                    <p id="period-low">-</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chart-container" class="chart-container hidden">
+            <img id="stock-chart" src="" alt="Stock price chart">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
